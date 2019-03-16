@@ -31,7 +31,7 @@ public class MainController {
     @FXML
     void dotOnClick() {
         this.calculationModel.insertDot();
-        this.dotButton.setDisable(true);
+        //this.dotButton.setDisable(true);
     }
 
     @FXML

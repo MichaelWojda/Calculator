@@ -39,8 +39,17 @@ public class CalculationModel {
 
     public void insertDot(){
         StringBuilder stringBuilder = new StringBuilder(display.get());
-        stringBuilder.append(".");
-        display.set(stringBuilder.toString());
+        Boolean exist = false;
+        for(int i =0; i<stringBuilder.length();i++){
+            if(stringBuilder.charAt(i)=='.'){
+                exist=true;
+            }
+        }
+        if(exist==false && ((!display.get().equals("/") && !display.get().equals("*") && !display.get().equals("+") && !display.get().equals("-"))))
+        {
+            stringBuilder.append(".");
+            display.set(stringBuilder.toString());
+        }
     }
     public void selectAction(String sign){
         if(!display.get().equals("/") && !display.get().equals("*") && !display.get().equals("+") && !display.get().equals("-")){
