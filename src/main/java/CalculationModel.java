@@ -106,6 +106,10 @@ public class CalculationModel {
             this.setAction("-");
             setDisplay(stringBuilder.toString());
         }
+        else if(display.get().equals("/") || display.get().equals("*") || display.get().equals("+") || display.get().equals("-")){
+            display.set("-");
+            this.setAction("-");
+        }
         else {
             this.setFirstNumber(Double.valueOf(display.get()));
             display.set("-");
