@@ -125,6 +125,7 @@ public class MainController {
         this.calculationModel.setSecondNumber(0);
         this.calculationModel.setAction(null);
         this.dotButton.setDisable(false);
+        this.calculationModel.setAction("");
 
     }
 }

@@ -6,7 +6,7 @@ public class CalculationModel {
 
     double firstNumber;
     double secondNumber;
-    String action;
+    String action="";
     Boolean afterResult = false;
 
 
@@ -64,37 +64,46 @@ public class CalculationModel {
     }
 
     public void equals(){
-        setSecondNumber(Double.valueOf(display.get()));
-        if(getAction().equals("+")){
-            double result = firstNumber + secondNumber;
-            display.set(String.valueOf(result));
-            this.setFirstNumber(result);
+        if(getAction().equals("")){
+            this.setDisplay(this.getDisplay());
+
         }
-        if(getAction().equals("*")){
-            double result = firstNumber * secondNumber;
-            display.set(String.valueOf(result));
-            this.setFirstNumber(result);
-        }
-        if(getAction().equals("/")){
-            if(secondNumber==0){
-                Dialogs.errorDialog("Błąd dzielenia przez 0");
-                firstNumber=0;
-                secondNumber=0;
-                setDisplay("0");
+        else {
+            if(afterResult==false){
+                setSecondNumber(Double.valueOf(display.get()));
             }
             else {
-                double result = firstNumber / secondNumber;
+                
+            }
+            if (getAction().equals("+")) {
+                double result = firstNumber + secondNumber;
                 display.set(String.valueOf(result));
                 this.setFirstNumber(result);
             }
+            if (getAction().equals("*")) {
+                double result = firstNumber * secondNumber;
+                display.set(String.valueOf(result));
+                this.setFirstNumber(result);
+            }
+            if (getAction().equals("/")) {
+                if (secondNumber == 0) {
+                    Dialogs.errorDialog("Błąd dzielenia przez 0");
+                    firstNumber = 0;
+                    secondNumber = 0;
+                    setDisplay("0");
+                } else {
+                    double result = firstNumber / secondNumber;
+                    display.set(String.valueOf(result));
+                    this.setFirstNumber(result);
+                }
+            }
+            if (getAction().equals("-")) {
+                double result = firstNumber - secondNumber;
+                display.set(String.valueOf(result));
+                this.setFirstNumber(result);
+            }
+            this.afterResult = true;
         }
-        if(getAction().equals("-")){
-            double result = firstNumber-secondNumber;
-            display.set(String.valueOf(result));
-            this.setFirstNumber(result);
-        }
-        this.afterResult=true;
-
     }
 
     public void insertMinus(){
